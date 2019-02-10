@@ -19,6 +19,6 @@ model.load_weights('model.h5')
 dataset = tf.data.Dataset.from_tensor_slices((inputs, outputs))
 dataset = dataset.batch(batchSize)
 dataset = dataset.repeat()
-model.fit(dataset, epochs=10, steps_per_epoch=800)
+model.fit(dataset, epochs=10, steps_per_epoch=400)
 
 model.save_weights('model.h5', save_format='h5')

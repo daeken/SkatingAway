@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 
-batchSize = 125
+batchSize = 250
 
 def toTimeDomain(x):
 	x *= 512
@@ -15,9 +15,14 @@ def toTimeDomain(x):
 	return tf.concat(elements, 1)
 
 model = tf.keras.Sequential()
-model.add(layers.Dense(2048, activation='tanh', input_dim=2048))
+model.add(layers.Dense(1024, activation='tanh', input_dim=2048))
+model.add(layers.Dense(512, activation='tanh'))
+model.add(layers.Dense(256, activation='tanh'))
+model.add(layers.Dense(512, activation='tanh'))
 model.add(layers.Dense(1024, activation='tanh'))
+model.add(layers.Dense(2048, activation='tanh'))
+model.add(layers.Dense(4096, activation='tanh'))
 model.add(layers.Dense(9216, activation='tanh'))
 #model.add(layers.Lambda(toTimeDomain, output_shape=[batchSize, 512 * 9]))
 
-model.compile(optimizer=tf.train.AdamOptimizer(0.0001), loss='mse', metrics=['mae'])
+model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='mse', metrics=['mae'])
