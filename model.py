@@ -20,4 +20,4 @@ model.add(layers.Dense(1024, activation='tanh'))
 model.add(layers.Dense(9216, activation='tanh'))
 #model.add(layers.Lambda(toTimeDomain, output_shape=[batchSize, 512 * 9]))
 
-model.compile(optimizer=tf.train.AdamOptimizer(0.001), loss='mse', metrics=['mae'])
+model.compile(optimizer=tf.train.AdamOptimizer(0.0001), loss='mse', metrics=['mae'])
